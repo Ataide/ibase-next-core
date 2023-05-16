@@ -1,15 +1,12 @@
+import { compare } from 'bcrypt';
+import NextAuth, { type NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from '../../../../prisma/client';
-import { compare } from 'bcrypt'
-import NextAuth, { type NextAuthOptions } from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
 
-export const authOptions: NextAuthOptions = {
-  session: {
-    strategy: 'jwt'
-  },
+export const authOptions: NextAuthOptions = {  
   providers: [
     CredentialsProvider({
-      name: 'Sign in',
+      name: 'Credentials',
       credentials: {
         email: {
           label: 'Email',
@@ -51,8 +48,6 @@ export const authOptions: NextAuthOptions = {
       }
     })
   ],
-  
-  
   pages: {
     signIn: "/signin",
     signOut: "/signout"
@@ -71,7 +66,7 @@ export const authOptions: NextAuthOptions = {
     //   }
     // },
     session: ({ session, token }) => {
-      // console.log('Session Callback', { session, token })
+      console.log('Session Callback', { session, token })
       return {
         ...session,
         user: {
@@ -82,7 +77,7 @@ export const authOptions: NextAuthOptions = {
       }
     },
     jwt: ({ token, user }) => {
-      // console.log('JWT Callback', { token, user })
+      console.log('JWT Callback', { token, user })
       if (user) {
         const u = user as unknown as any
         return {
@@ -98,4 +93,4 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions)
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };

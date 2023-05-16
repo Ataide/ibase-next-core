@@ -16,7 +16,7 @@ export function PrivateLayout({ children }: { children: React.ReactNode }) {
   const theme = useMemo(() => (darkMode ? darkTheme : lightTheme), [darkMode]);
 
   const toggleDarkMode = (checked: boolean) => {
-    if (checked === false) setDarkMode(prefersDarkMode);
+    if (checked === false) setDarkMode(false);
     else setDarkMode(checked);
   };
 
