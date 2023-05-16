@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-      <div>Pagina Inicial</div>
+      <h6>Tela de Registro</h6>
     </>
-  );
+  )
 }

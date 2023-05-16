@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-      <div>Pagina Inicial</div>
+      <h1>Criação de Usuarios</h1>
     </>
-  );
+  )
 }
